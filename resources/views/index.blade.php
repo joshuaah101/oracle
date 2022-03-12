@@ -5,17 +5,18 @@
 @endsection
 
 @section('nav')
-    <nav class="bg-gray-100 fixed text-gray-800 dark:bg-slate-900 dark:text-slate-300 px-4 py-2 flex justify-center w-full border-b border-gray-300 dark:border-b dark:border-slate-700" id="nav-menu">
+    <nav class="bg-gray-100 fixed z-10 text-gray-800 dark:bg-slate-900 dark:text-slate-300 px-4 py-2 flex justify-center w-full border-b border-gray-300 dark:border-b dark:border-slate-700" id="nav-menu">
         <div class="max-w-6xl w-full">
             <div class="flex items-center justify-between w-full">          
-                <a href="#" class="">
-                    logo
+                <a href="#" class="text-sm font-semibold ">
+                    {{-- <img src="{{ asset('storage/images/png/oracle-logo.png') }}" alt="logo" class="h-10"> --}}
+                    Oracle of the day
                 </a>
 
                 <div class="flex justify-between items-center md:space-x-10">
                     <div class="hidden md:flex md:space-x-4">
                         {{-- menu items --}}
-                        <a href="#" class="uppercase text-xs font-bold text-gray-500 dark:text-slate-400 hover:text-gray-900 dark:hover:text-slate-100 transition duration-300 ease-in">Home</a>
+                        <a href="#" class="{{ request()->is('/') ? 'text-black dark:text-white' : '' }} uppercase text-xs font-bold text-gray-500 dark:text-slate-400 hover:text-gray-900 dark:hover:text-slate-100 transition duration-300 ease-in">Home</a>
                         <a href="#" class="uppercase text-xs font-bold text-gray-500 dark:text-slate-400 hover:text-gray-900 dark:hover:text-slate-100 transition duration-300 ease-in">About</a>
                         <a href="#" class="uppercase text-xs font-bold text-gray-500 dark:text-slate-400 hover:text-gray-900 dark:hover:text-slate-100 transition duration-300 ease-in">Contact</a>
                         <a href="#" class="uppercase text-xs font-bold text-gray-500 dark:text-slate-400 hover:text-gray-900 dark:hover:text-slate-100 transition duration-300 ease-in">Login</a>
@@ -40,60 +41,144 @@
                 </div>
             </div>
         </div>
+
+        {{-- scroll up control --}}
+        <a id="scroll-up" href="#" class="hidden absolute top-[21rem] md:top-[32rem] right-3 z-10 text-gray-800 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-300 dark:hover:text-gray-800 focus:outline-none ring-2 ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2 transition duration-300 ease-in">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 fill-current" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
+            </svg>
+        </a>
     </nav>
 @endsection
 
 @section('header')
-    <div class="mt-14 w-full h-64 border border-gray-300 dark:border-slate-700 bg-slate-900 dark:bg-gray-300 max-w-6xl">
-
+    <div class="mt-14 w-full h-[30rem] bg-fixed bg-cover bg-center bg-no-repeat" style="background-image: linear-gradient(to bottom, rgba(53, 119, 40, 0.2) 80%, rgba(53, 119, 40, 0.2) 20%), url({{ asset('storage/images/jpg/bible-4.jpg') }})">
+        <div class="relative top-28 sm:top-[18%] px-8 md:px-24">
+            <div class="hidden header-caption absolute space-y-8 text-black dark:text-white">
+                <div class="flex flex-col space-y-5">
+                    <header class="text-2xl md:text-6xl font-semibold">
+                        Oracle of the day!
+                    </header>
+                    <span class="text-xl md:text-3xl font-semibold">
+                        ~ Daily Devotional
+                    </span>
+                </div>
+                <div class="mt-8">
+                    <blockquote class="flex flex-col space-y-5 max-w-6xl">
+                        <p class="italic text-md font-bold">
+                         I welcome you all to this daily devotional, I pray you will be blessed as you take out quality time to read and digest the content. As the Lord liveth, fresh threads will be released daily.
+                         </p>
+                         <cite class="text-sm font-bold">
+                             Dr. Tunde Jesusina
+                         </cite>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 
 @section('main')   
-   <div class="max-w-6xl px-5 md:px-0 my-8 text-sm">
-       <div class="border rounded px-5 py-2">
+   <main class="max-w-6xl px-3 md:px-0 mt-5 mb-12 text-sm w-full">
+       <div class="py-2 space-y-5">
            <header class="text-gray-800 dark:text-slate-300 text-xl font-medium">
-                Oracle of the day - Editorial note
+                Editorial note
+                <hr class="w-1/4 mt-2">
             </header>
-            <hr class="w-1/4 mt-2">
-           <blockquote class="mt-2 flex flex-col space-y-2">
+            <blockquote class="mt-2 flex flex-col space-y-2">
                <p class="italic font-normal">
                 I welcome you all to this daily devotional, I pray you will be blessed as you take out quality time to read and digest the content. As the Lord liveth, fresh threads will be released daily.
                 </p>
                 <cite class="text-xs font-semibold">
                     Dr. Tunde Jesusina
                 </cite>
-           </blockquote>
+            </blockquote>
        </div>
+
+       <hr class="border-gray-300 dark:border-slate-800">
        
-       <div class="mt-5">
-           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribusLorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, quasi dolorum vero sequi natus odio sed optio iste provident impedit ipsum est necessitatibus esse recusandae neque porro ipsam fugit doloribus
+       <div class="mt-10 w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+           <div class="grid col-span-3">
+               <div class="">
+                    <div class="bg-gray-300 text-gray-800 dark:bg-slate-800 dark:text-slate-200 rounded-md">
+                        <figure class="flex flex-col sm:flex-row">
+                            <div class="flex-none relative w-64">
+                                <img src="{{ asset('storage/images/jpg/bible-2.jpg') }}" alt="Content-icon" class="absolute inset-0 w-full h-full object-cover rounded-tl-md rounded-bl-md">
+                            </div>
+                            <div class="p-8 space-y-4">
+                                <header class="uppercase text-xl font-semibold">
+                                    unbelievable answers to requests to enjoy
+                                </header>
+                                <div class="body space-y-3">
+                                    <blockquote class="bg-gray-200 text-gray-600 dark:bg-slate-700 dark:text-slate-400 p-5 rounded">
+                                        <p class="text-justify">
+                                            "Then said the king unto her, what wilt thou, queen Esther? and what is thy request? it shall be even given thee to the half of the kingdom."
+                                        </p>
+                                        <figcaption class="italic text-justify mt-2">
+                                            Esther 5:3
+                                        </figcaption>
+                                    </blockquote>
+                                    <p class="body-content text-md text-justify">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed qui, quo id tenetur iste labore consequuntur ex impedit cumque dicta dolorem consequatur debitis tempore officiis in nisi? Sed, dolorem totam.
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint sequi nihil saepe omnis facere quaerat, quae quia nulla non excepturi delectus laboriosam, aliquid velit provident voluptatem alias consequuntur accusantium! Fugit.
+                                    </p>
+                                </div>
+                                <div class="footer flex justify-between">
+                                    <div class="text-sm font-semibold">
+                                        " Time posted
+                                    </div>
+                                    <div class="text-sm font-semibold">
+                                        Reactions
+                                    </div>
+                                </div>
+                            </div>
+                        </figure>
+                    </div>
+               </div>
+           </div>
+
+           <div class="w-full h-full px-5 py-3 flex justify-center bg-gray-300 text-gray-800 dark:bg-slate-800 dark:text-slate-200 rounded">
+                <div class="calendar">
+                    <div class="month flex px-5 mt-4 space-x-5 justify-between text-center items-center">
+                        <span class="prev cursor-pointer px-2 py-1 ring-1 ring-gray-800 hover:bg-gray-800 hover:text-gray-300 dark:ring-slate-400 rounded dark:hover:bg-slate-300 dark:hover:text-slate-800 transition duration-300 ease-in">&lt;</span>
+                        <div class="date">
+                        <h1 class="text-sm"></h1>
+                        <p class="text-xs"></p>
+                        </div>
+                        <span class="next cursor-pointer px-2 py-1 ring-1 ring-gray-800 hover:bg-gray-800 hover:text-gray-300 dark:ring-slate-400 rounded dark:hover:bg-slate-300 dark:hover:text-slate-800 transition duration-300 ease-in">&gt;</span>
+                    </div>
+                    <div class="weekdays flex justify-center items-center space-x-2 py-3">
+                        <div>Sun</div>
+                        <div>Mon</div>
+                        <div>Tue</div>
+                        <div>Wed</div>
+                        <div>Thu</div>
+                        <div>Fri</div>
+                        <div>Sat</div>
+                    </div>
+                    <div class="days flex flex-wrap items-center"></div>
+                </div>
+           </div>
        </div>
-   </div>   
+   </main>   
 @endsection
 
 @section('footer')
-<div class="max-w-6xl fixed z-10 w-full flex flex-row justify-between bottom-0 border-t border-gray-300 dark:border-t dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 bg-gray-100 text-gray-800 py-3 px-2 font-semibold">
+<div class="max-w-6xl w-full flex flex-row justify-between border-t border-gray-300 dark:border-t dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 bg-gray-100 text-gray-800 py-3 px-2 font-semibold">
     <div class="text-xs">
         Oracle of the day | &copy; {{ date('Y') }}
     </div>
 
-    <div class="text-xs flex space-x-5 items-center">
-        <a href="#" class="">
-            <img src="{{ asset('storage/images/svg/facebook.svg') }}" alt="follow us on " class="">
+    <div class="text-xs flex space-x-3 items-center">
+        <a href="https://facebook.com/" class="">
+            <img src="{{ asset('storage/images/svg/facebook.svg') }}" alt="follow us on " class="ring-2 h-6 ring-slate-900 px-2 py-1 hover:ring-0 dark:bg-gray-300 dark:hover:bg-gray-100 transition duration-300 ease-in-out rounded-md">
         </a>
-        <a href="#" class="">
-            <img src="{{ asset('storage/images/svg/instagram.svg') }}" alt="follow us on " class="">
+        <a href="https://instagram.com/" class="">
+            <img src="{{ asset('storage/images/svg/instagram.svg') }}" alt="follow us on " class="ring-2 h-6 ring-slate-900 px-2 py-1 hover:ring-0 dark:bg-gray-300 dark:hover:bg-gray-100 transition duration-300 ease-in-out rounded-md">
         </a>
-        <a href="#" class="">
-            <img src="{{ asset('storage/images/svg/twitter.svg') }}" alt="follow us on " class="">
+        <a href="https://twitter.com/" class="">
+            <img src="{{ asset('storage/images/svg/twitter.svg') }}" alt="follow us on " class="ring-2 h-6 ring-slate-900 px-2 py-1 hover:ring-0 dark:bg-gray-300 dark:hover:bg-gray-100 transition duration-300 ease-in-out rounded-md">
         </a>
     </div>
-
-    <a id="scroll-up" href="#" class="hidden absolute bottom-24 right-1 z-10 text-gray-800 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-300 dark:hover:text-gray-800 focus:outline-none ring-2 ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 transition duration-300 ease-in">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 fill-current" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
-        </svg>
-    </a>
 </div>
 @endsection

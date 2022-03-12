@@ -4,7 +4,42 @@
 
 
 /* custom css */
-title
+.header-caption
 {
-    color: red;
+    animation: animateHeaderCaption 2s;
+    -webkit-animation: animateHeaderCaption 2s;
+    display: flex;
+    flex-direction: column;
+    transition: all 2s ease-in;
+    -webkit-transition: all 2s ease-in;
+    -moz-transition: all 2s ease-in;
+    -ms-transition: all 2s ease-in;
+    -o-transition: all 2s ease-in;
 }
+
+@keyframes animateHeaderCaption{
+    /* 0%{top: 270px;}
+
+    10%{top: 180px;}
+
+    30%{top: 320px;}
+
+    50%{top: 180px;}
+    
+    70%{top: 70px;}
+
+    100%{top: 0;} */
+
+    0%{ transform: scaleX(-1); -webkit-transform: scaleX(-1); -moz-transform: scaleX(-1); -ms-transform: scaleX(-1); -o-transform: scaleX(-1); }
+    /* 20%{ transform: scaleX(1); -webkit-transform: scaleX(1); -moz-transform: scaleX(1); -ms-transform: scaleX(1); -o-transform: scaleX(1); }
+    40%{ transform: scaleX(-1); -webkit-transform: scaleX(-1); -moz-transform: scaleX(-1); -ms-transform: scaleX(-1); -o-transform: scaleX(-1); }
+    60%{ transform: scaleX(1); -webkit-transform: scaleX(1); -moz-transform: scaleX(1); -ms-transform: scaleX(1); -o-transform: scaleX(1); } */
+    50%{ transform: scaleX(-1); -webkit-transform: scaleX(-1); -moz-transform: scaleX(-1); -ms-transform: scaleX(-1); -o-transform: scaleX(-1); }
+    100%{ transform:scaleX(1); -webkit-transform:scaleX(1); -moz-transform:scaleX(1); -ms-transform:scaleX(1); -o-transform:scaleX(1); }
+}
+
+.days div:hover:not(.today) {
+    background-color: #262626;
+    /* border: 0.1rem solid #888; */
+    cursor: pointer;
+  }

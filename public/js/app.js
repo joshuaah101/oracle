@@ -2102,7 +2102,7 @@ themeToggleBtn.addEventListener('click', function () {
 var navMenu = document.getElementById('nav-menu');
 var scrollTopBtn = document.getElementById('scroll-up');
 window.addEventListener('scroll', function () {
-  if (document.documentElement.scrollTop > 30) {
+  if (document.documentElement.scrollTop > 80) {
     scrollTopBtn.classList.remove('hidden');
   } else {
     scrollTopBtn.classList.add('hidden');
@@ -2110,7 +2110,50 @@ window.addEventListener('scroll', function () {
 });
 scrollTopBtn.addEventListener('click', function () {
   document.documentElement.scrollTo(navMenu);
+}); //calendar
+
+var date = new Date();
+
+var renderCalendar = function renderCalendar() {
+  date.setDate(1);
+  var monthDays = document.querySelector(".days");
+  var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+  var prevLastDay = new Date(date.getFullYear(), date.getMonth(), 0).getDate();
+  var firstDayIndex = date.getDay();
+  var lastDayIndex = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay();
+  var nextDays = 7 - lastDayIndex - 1;
+  var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  document.querySelector(".date h1").innerHTML = months[date.getMonth()];
+  document.querySelector(".date p").innerHTML = new Date().toDateString();
+  var days = "";
+
+  for (var x = firstDayIndex; x > 0; x--) {
+    days += "<div class=\"opacity-50 text-xs m-2 text-center p-2 w-4 h-4 flex items-center justify-center hover:bg-gray-800 hover:text-gray-300\">".concat(prevLastDay - x + 1, "</div>");
+  }
+
+  for (var i = 1; i <= lastDay; i++) {
+    if (i === new Date().getDate() && date.getMonth() === new Date().getMonth()) {
+      days += "<div class=\"text-xs m-2 text-center p-2 w-4 h-auto flex items-center justify-center bg-gray-800 text-gray-300 dark:bg-slate-200 dark:text-slate-800\">".concat(i, "</div>");
+    } else {
+      days += "<div class=\"text-xs m-2 text-center p-2 w-4 h-auto flex items-center justify-center hover:bg-gray-800 hover:text-gray-300\">".concat(i, "</div>");
+    }
+  }
+
+  for (var j = 1; j <= nextDays; j++) {
+    days += "<div class=\"opacity-50 text-xs m-2 text-center p-2 w-4 h-4 flex items-center justify-center hover:bg-gray-800 hover:text-gray-300\">".concat(j, "</div>");
+    monthDays.innerHTML = days;
+  }
+};
+
+document.querySelector(".prev").addEventListener("click", function () {
+  date.setMonth(date.getMonth() - 1);
+  renderCalendar();
 });
+document.querySelector(".next").addEventListener("click", function () {
+  date.setMonth(date.getMonth() + 1);
+  renderCalendar();
+});
+renderCalendar(); //ends calendar
 
 /***/ }),
 
